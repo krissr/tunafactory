@@ -19,6 +19,7 @@ Priority models:
 
 ```bash
 python -m tunafactory.cli data prepare data.jsonl --output-dir prepared_dataset
+python -m tunafactory.cli data diagnose data.jsonl
 python -m tunafactory.cli run finetune --model llama3.1-8b --dataset prepared_dataset --preset small
 python -m tunafactory.cli eval report --run runs/run_001
 python -m tunafactory.cli export --run runs/run_001 --target gguf
@@ -44,6 +45,7 @@ Create a JSONL file where each line is one training sample. Then run:
 
 ```bash
 python -m tunafactory.cli data prepare data.jsonl --output-dir prepared_dataset
+python -m tunafactory.cli data diagnose data.jsonl
 ```
 
 This creates the prepared train/validation artifacts expected by the runner.
