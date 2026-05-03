@@ -1,6 +1,6 @@
-# 🐟 TunaFactory
+# 🐟 tunafactory
 
-TunaFactory is a **dead-simple fine-tuning toolkit** for LLMs.
+tunafactory is a **dead-simple fine-tuning toolkit** for LLMs.
 
 Goal: go from raw examples to a usable model in a few commands.
 
