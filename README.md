@@ -26,4 +26,8 @@ python -m tunafactory.cli export --run runs/run_001 --target gguf
 
 ## Detailed implementation plan
 
+If this flow is smooth, MVP is successful.
+
+## Detailed implementation plan
+
 See `docs/IMPLEMENTATION_PLAN.md` for the execution roadmap.
