@@ -116,3 +116,7 @@ A new user can:
 5. Export GGUF and run locally.
 
 If this flow is smooth, MVP is successful.
+
+## Detailed implementation plan
+
+See `docs/IMPLEMENTATION_PLAN.md` for the execution roadmap.
