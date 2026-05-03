@@ -1,4 +1,4 @@
-# tunafactory Implementation Plan (Karpathy-style: useful + simple)
+# tunafactory Implementation Plan
 
 This is a concrete, execution-focused plan to ship tunafactory from concept to a working v0.1 product.
 
