@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 
+from tunafactory.data.diagnose import diagnose_dataset
 from tunafactory.data.prepare import prepare_dataset
 from tunafactory.eval.report import build_report
 from tunafactory.export.service import export_run
@@ -16,6 +17,8 @@ def main() -> None:
     data = sub.add_parser("data")
     data_sub = data.add_subparsers(dest="data_cmd", required=True)
     prepare = data_sub.add_parser("prepare")
+    diagnose = data_sub.add_parser("diagnose")
+    diagnose.add_argument("input_path")
     prepare.add_argument("input_path")
     prepare.add_argument("--output-dir", default="prepared_dataset")
     prepare.add_argument("--format", dest="fmt", default=None)
@@ -41,6 +44,9 @@ def main() -> None:
     if args.command == "data" and args.data_cmd == "prepare":
         _, summary = prepare_dataset(args.input_path, args.output_dir, fmt=args.fmt)
         print(json.dumps(summary, indent=2))
+    elif args.command == "data" and args.data_cmd == "diagnose":
+        _, result = diagnose_dataset(args.input_path)
+        print(result["report"])
     elif args.command == "run" and args.run_cmd == "finetune":
         run_dir = launch_finetune(args.model, args.dataset, preset=args.preset)
         print(run_dir)
