@@ -2,14 +2,18 @@
 
 tunafactory is a **dead-simple fine-tuning toolkit** for LLMs.
 
-Goal: go from raw examples to a usable model in a few commands.
-
-Backend: an opinionated wrapper around [LLaMA-Factory](https://github.com/hiyouga/LlamaFactory).
+Backend: wrapper + orchestrator around [LLaMA-Factory](https://github.com/hiyouga/LlamaFactory).
 
 Priority models:
 - 🥇 `meta-llama/Meta-Llama-3.1-8B-Instruct`
 - 🥈 `mistralai/Mistral-7B-Instruct-v0.3`
 - 🥈 `mistralai/Mistral-7B-v0.3`
+
+## Requirements
+
+- Python 3.10+
+- `llamafactory-cli` installed and available in `PATH`
+- CUDA GPU environment configured for training
 
 ## Quickstart
 

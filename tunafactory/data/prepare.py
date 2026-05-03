@@ -63,6 +63,9 @@ def prepare_dataset(
         raise ValueError(f"Unsupported format: {fmt}")
 
     report = validate_rows(rows)
+    if not report["ok"]:
+        raise ValueError(f"Dataset validation failed with {len(report['errors'])} errors. See data_quality.json")
+
     train_path = out / "prepared_train.jsonl"
     val_path = out / "prepared_val.jsonl"
 
@@ -74,6 +77,22 @@ def prepare_dataset(
         with target.open("w") as f:
             for row in data:
                 f.write(json.dumps(row) + "\n")
+
+    dataset_info = {
+        "prepared_train": {
+            "file_name": train_path.name,
+            "formatting": "sharegpt",
+            "columns": {"messages": "messages"},
+            "tags": {"role_tag": "role", "content_tag": "content", "user_tag": "user", "assistant_tag": "assistant", "system_tag": "system"},
+        },
+        "prepared_val": {
+            "file_name": val_path.name,
+            "formatting": "sharegpt",
+            "columns": {"messages": "messages"},
+            "tags": {"role_tag": "role", "content_tag": "content", "user_tag": "user", "assistant_tag": "assistant", "system_tag": "system"},
+        },
+    }
+    (out / "dataset_info.json").write_text(json.dumps(dataset_info, indent=2))
 
     fp = _fingerprint(rows)
     (out / "fingerprint.sha256").write_text(fp)
